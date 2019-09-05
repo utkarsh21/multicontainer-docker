@@ -3,17 +3,17 @@ sudo: required
 services: 
     - docker
 before_install:
-    - docker build -t utkarsh21/multicontainer-docker -f ./client/Dockerfile.dev ./client
+    - docker build -t utkarshsahu/multicontainer-docker -f ./client/Dockerfile.dev ./client
 scripts:
-    - docker run -e CI=true utkarsh21/multicontainer-docker npm run test 
+    - docker run -e CI=true utkarshsahu/multicontainer-docker npm run test 
 after_success:
-    - docker build -t utkarsh21/multi-client ./client
-    - docker build -t utkarsh21/multi-nginx ./nginx
-    - docker build -t utkarsh21/multi-server ./server
-    - docker build -t utkarsh21/multi-worker ./worker
+    - docker build -t utkarshsahu/multi-client ./client
+    - docker build -t utkarshsahu/multi-nginx ./nginx
+    - docker build -t utkarshsahu/multi-server ./server
+    - docker build -t utkarshsahu/multi-worker ./worker
     - echo "$DOCKER_PASSWORD"| docker login -u "$DOCKER_ID" --password-stdin
-    - docker push utkarsh21/multi-client
-    - docker push utkarsh21/multi-nginx
-    - docker push utkarsh21/multi-server
-    - docker push utkarsh21/multi-worker
+    - docker push utkarshsahu/multi-client
+    - docker push utkarshsahu/multi-nginx
+    - docker push utkarshsahu/multi-server
+    - docker push utkarshsahu/multi-worker
 
