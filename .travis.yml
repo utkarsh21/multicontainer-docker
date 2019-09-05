@@ -5,7 +5,7 @@ services:
 before_install:
     - docker build -t utkarsh21/multicontainer-docker -f ./client/Dockerfile.dev ./client
 scripts:
-    - docker run -e CI=true utkarsh21/multicontainer-docker npm test 
+    - docker run -e CI=true utkarsh21/multicontainer-docker npm run test 
 after-success:
     - docker build -t utkarsh21/multi-client ./client
     - docker build -t utkarsh21/multi-nginx ./nginx
